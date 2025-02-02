@@ -9,9 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(${CMAKE_SOURCE_DIR}/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Cfg)
 
-# Compile additional source files into a library
-add_library(NextGenLib ${CMAKE_SOURCE_DIR}/Tools/common.c)
+# Dynamically find all .c files in Software/Tools/
+file(GLOB TOOLS_SOURCES "${CMAKE_SOURCE_DIR}/Tools/*.c")
+
+# Create a library from all found .c files
+add_library(ToolsLib ${TOOLS_SOURCES})
 
 # Link the library to the main executable
 add_executable(NextGen main.c)
-target_link_libraries(NextGen PRIVATE NextGenLib)
+target_link_libraries(NextGen PRIVATE ToolsLib)
