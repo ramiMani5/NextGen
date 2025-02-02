@@ -3,9 +3,9 @@
 echo "Cleaning up the project..."
 
 # Remove the build directory
-if [ -d "build" ]; then
+if [ -d "../build" ]; then
     echo "Removing build directory..."
-    rm -rf build
+    rm -rf ../build
 else
     echo "No build directory found."
 fi

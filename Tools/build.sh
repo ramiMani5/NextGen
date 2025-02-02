@@ -1,16 +1,16 @@
 #!/bin/bash
 
 echo "Creating build directory..."
-mkdir -p build
-cd build || exit
+mkdir -p ../build
+cd ../build || exit
 
 echo "Running CMake..."
-cmake ..
+cmake ../Software/
 
 echo "Building the project..."
 cmake --build .
 
 echo "Running the executable..."
-./MyProject
+../build/NextGen
 
 echo "Done!"
