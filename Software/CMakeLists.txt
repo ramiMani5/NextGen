@@ -5,6 +5,10 @@ project(NextGen)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Add the flag to save preprocessed files (.i)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -save-temps")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -save-temps")
+
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/Tools)
 include_directories(${CMAKE_SOURCE_DIR}/Cfg)
