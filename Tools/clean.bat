@@ -1,28 +1,29 @@
 @echo off
-echo Cleaning up the project...
+setlocal
 
-REM Remove the build directory
-if exist "..\build\" (
-    echo Removing build directory...
-    rmdir /s /q ..\build
-) else (
-    echo Build directory does not exist.
-)
+REM =====================================================
+REM Get the directory of this script (absolute path)
+REM =====================================================
+set "SCRIPT_DIR=%~dp0"
+REM Remove trailing backslash
+set "SCRIPT_DIR=%SCRIPT_DIR:~0,-1%"
 
-REM Remove CMake cache file
-if exist "CMakeCache.txt" (
-    echo Removing CMake cache...
-    del /f /q CMakeCache.txt
-) else (
-    echo No CMakeCache.txt found.
-)
+echo Script directory: %SCRIPT_DIR%
 
-REM Remove CMakeFiles directory
-if exist "CMakeFiles\" (
-    echo Removing CMake files...
-    rmdir /s /q CMakeFiles
-) else (
-    echo No CMakeFiles directory found.
+REM =====================================================
+REM Define important paths (absolute, safe)
+REM =====================================================
+set "BUILD_DIR=%SCRIPT_DIR%\..\build"
+set "SOURCE_DIR=%SCRIPT_DIR%\..\Software"
+set "CMAKE_FILE=%SOURCE_DIR%\CMakeLists.txt"
+
+REM =====================================================
+REM Clean previous build
+REM =====================================================
+if exist "%BUILD_DIR%" (
+    echo Removing previous build directory...
+    rmdir /s /q "%BUILD_DIR%"
 )
 
 echo Cleanup complete!
+endlocal
