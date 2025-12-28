@@ -54,3 +54,4 @@ dkms.conf
 # build folder
 build/
 .vscode/
+/Software/tests/build

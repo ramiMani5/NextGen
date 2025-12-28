@@ -19,6 +19,12 @@ file(GLOB TOOLS_SOURCES "${CMAKE_SOURCE_DIR}/Tools/*.c")
 # Create a library from all found .c files
 add_library(ToolsLib ${TOOLS_SOURCES})
 
-# Link the library to the main executable
+# Main executable
 add_executable(NextGen main.c)
 target_link_libraries(NextGen PRIVATE ToolsLib)
+
+# 🔹 Enable testing
+enable_testing()
+
+# 🔹 Add tests subdirectory
+add_subdirectory(tests)
